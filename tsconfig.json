@@ -1,10 +1,10 @@
 {
   "include": ["src", "tests", "examples"],
-  "exclude": ["src/_shims/**/*-deno.ts"],
+  "exclude": ["src/_shims/**/*-deno.ts", "examples"],
   "compilerOptions": {
     "target": "es2020",
     "lib": ["es2020"],
-    "module": "commonjs",
+    "module": "ESNext", 
     "moduleResolution": "node",
     "esModuleInterop": true,
     "baseUrl": "./",
@@ -13,12 +13,10 @@
       "openai/*": ["src/*"],
       "openai": ["src/index.ts"]
     },
-    "noEmit": true,
-
+    "outDir": "./dist",         // Esto indica dónde se deben poner los archivos generados
+    "declaration": true,        // Esto genera los archivos `.d.ts` necesarios
     "resolveJsonModule": true,
-
     "forceConsistentCasingInFileNames": true,
-
     "strict": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
@@ -32,8 +30,7 @@
     "noUncheckedIndexedAccess": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
-		"isolatedModules": true,
-
+    "isolatedModules": true,
     "skipLibCheck": true
   }
 }
