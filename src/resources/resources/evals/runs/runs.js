@@ -1,0 +1,47 @@
+// File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
+import { APIResource } from '../../../resource';
+import { isRequestOptions } from '../../../core';
+import * as OutputItemsAPI from './output-items';
+import { OutputItemListResponsesPage, OutputItems, } from './output-items';
+import { CursorPage } from '../../../pagination';
+export class Runs extends APIResource {
+    constructor() {
+        super(...arguments);
+        this.outputItems = new OutputItemsAPI.OutputItems(this._client);
+    }
+    /**
+     * Create a new evaluation run. This is the endpoint that will kick off grading.
+     */
+    create(evalId, body, options) {
+        return this._client.post(`/evals/${evalId}/runs`, { body, ...options });
+    }
+    /**
+     * Get an evaluation run by ID.
+     */
+    retrieve(evalId, runId, options) {
+        return this._client.get(`/evals/${evalId}/runs/${runId}`, options);
+    }
+    list(evalId, query = {}, options) {
+        if (isRequestOptions(query)) {
+            return this.list(evalId, {}, query);
+        }
+        return this._client.getAPIList(`/evals/${evalId}/runs`, RunListResponsesPage, { query, ...options });
+    }
+    /**
+     * Delete an eval run.
+     */
+    del(evalId, runId, options) {
+        return this._client.delete(`/evals/${evalId}/runs/${runId}`, options);
+    }
+    /**
+     * Cancel an ongoing evaluation run.
+     */
+    cancel(evalId, runId, options) {
+        return this._client.post(`/evals/${evalId}/runs/${runId}`, options);
+    }
+}
+export class RunListResponsesPage extends CursorPage {
+}
+Runs.RunListResponsesPage = RunListResponsesPage;
+Runs.OutputItems = OutputItems;
+Runs.OutputItemListResponsesPage = OutputItemListResponsesPage;
