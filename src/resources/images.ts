@@ -150,7 +150,7 @@ export interface ImageCreateVariationParams {
    * The size of the generated images. Must be one of `256x256`, `512x512`, or
    * `1024x1024`.
    */
-  size?: '256x256' | '512x512' | '1024x1024' | '1536x1024' | '1024x1536' | null;
+  size?: '256x256' | '512x512' | '1024x1024' | null;
 
   /**
    * A unique identifier representing your end-user, which can help OpenAI to monitor
@@ -215,7 +215,7 @@ export interface ImageEditParams {
    * (landscape), `1024x1536` (portrait), or `auto` (default value) for
    * `gpt-image-1`, and one of `256x256`, `512x512`, or `1024x1024` for `dall-e-2`.
    */
-  size?: '256x256' | '512x512' | '1024x1024' | '1536x1024' | '1024x1536' | null;
+  size?: '256x256' | '512x512' | '1024x1024' | null;
 
   /**
    * A unique identifier representing your end-user, which can help OpenAI to monitor
